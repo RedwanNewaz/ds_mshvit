@@ -1,0 +1,26 @@
+CUDA_VISIBLE_DEVICES: 0
+joint_trainer1:
+  python: "/home/aredwann/anaconda3/envs/SewerML-tracker/bin/python"
+  exe: "joint_trainer.py"
+  output: "/home/aredwann/PyDev/SewerML-tracker/results/joint_vit"
+  annotation: "/home/aredwann/PyDev/SewerML-tracker/annotations_sewerml"
+  batch_size: 128
+  token_dim: 512
+  log_version: 3
+  seed: 147049227
+
+  datasets:
+    rgb: "/home/aredwann/MSHViT/dataLink/rgb_train_val"
+    opti: "/home/aredwann/MSHViT/dataLink/train_val"
+
+  weights:
+    rgbModel: '/home/aredwann/MSHViT/weights/resnet50_hvit_sinkhorn.ckpt'
+    optiModel: '/home/aredwann/MSHViT/results/opticalflow_full/resent50_msvit_opticalflow.ckpt'
+
+  wand:
+   project: "sewer_ml_joint_vit_v1.3"
+   group: "sewer_ml_joint_vit_v1.3"
+
+  model:
+    backbone: "resnet50"
+    head: "MultiScaleViTHead"
